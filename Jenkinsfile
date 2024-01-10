@@ -3,6 +3,7 @@ pipeline {
     environment {
         APP_NAME = "test app name"
         IMAGE_NAME = "ghcr.io/apisitssi/sdfnhsfnhfs"
+        TEST = "555555"
     } 
     stages {
         stage('Build Image' ) {
