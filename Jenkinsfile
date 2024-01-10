@@ -15,5 +15,20 @@ pipeline {
                 sh "docker build -t ghcr.io/apisitssi/sdfnhsfnhfs ."
             }
         }
+        stage('Deliver Docker Image') {
+            agent {label 'build-server'}
+            steps {
+                withCredentials(
+                [usernamePassword(
+                    credentialsId: 'apisitssi',
+                    passwordVariable: 'githubPassword',
+                    usernameVariable: 'githubUser'
+                )]
+            ){
+                sh "docker login ghcr.io -u ${env.githubUser} -p ${env.githubPassword}"
+                sh "docker push ${env.IMAGE_NAME}:${env.BUILD_NUMBER}"
+            }
+            }
+        }
     }
 }        
