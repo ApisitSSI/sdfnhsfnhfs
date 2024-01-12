@@ -15,6 +15,7 @@ spec:
       containers:
         - name: user07-server
           image: ghcr.io/apisitssi/sdfnhsfnhfs
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 ---
